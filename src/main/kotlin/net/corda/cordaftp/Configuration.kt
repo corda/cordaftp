@@ -3,11 +3,13 @@ package net.corda.cordaftp
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import net.corda.core.serialization.CordaSerializable
 import net.corda.core.utilities.loggerFor
 import java.io.InputStream
 import java.nio.file.Files
 import java.nio.file.Paths
 
+@CordaSerializable
 enum class PostSendAction {
     DELETE {
         override fun doAction(file: String) {
