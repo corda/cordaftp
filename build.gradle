@@ -1,10 +1,10 @@
 buildscript {
-    ext.corda_release_group = 'net.corda'
-    ext.corda_release_version = 'corda-3.0'
-    ext.corda_gradle_plugins_version = '3.0.9'
-    ext.kotlin_version = '1.1.60'
+    ext.corda_release_version = '3.0.0-RC06'
+    ext.corda_release_group = "com.r3.corda"
+    ext.corda_gradle_plugins_version = '4.0.25'
+    ext.kotlin_version = '1.2.50'
     ext.junit_version = '4.12'
-    ext.quasar_version = '0.7.9'
+    ext.quasar_version = '0.7.10'
 
     ext.username = "corda"
     ext.password = "corda_initial_password"
@@ -14,6 +14,7 @@ buildscript {
         mavenLocal()
         mavenCentral()
         jcenter()
+        maven { url "https://ci-artifactory.corda.r3cev.com/artifactory/corda-releases" }
     }
 
     dependencies {
@@ -22,17 +23,21 @@ buildscript {
         classpath "net.corda.plugins:cordformation:$corda_gradle_plugins_version"
         classpath "net.corda.plugins:quasar-utils:$corda_gradle_plugins_version"
     }
-
 }
 
 repositories {
     mavenLocal()
     jcenter()
     mavenCentral()
-    maven { url 'https://dl.bintray.com/kotlin/exposed' }
     maven { url 'https://jitpack.io' }
-    maven { url 'https://ci-artifactory.corda.r3cev.com/artifactory/corda-releases' }
-    maven { url 'https://ci-artifactory.corda.r3cev.com/artifactory/corda-dev/' }
+    maven { url "https://ci-artifactory.corda.r3cev.com/artifactory/corda-releases" }
+    maven {
+        url 'https://ci-artifactory.corda.r3cev.com/artifactory/r3-corda-releases'
+        credentials {
+            username "qa-test"
+            password "TestItNowOrNever"
+        }
+    }
 }
 
 apply plugin: 'kotlin'
@@ -85,8 +90,8 @@ dependencies {
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {
-        languageVersion = "1.1"
-        apiVersion = "1.1"
+        languageVersion = "1.2"
+        apiVersion = "1.2"
         jvmTarget = "1.8"
         javaParameters = true   // Useful for reflection.
     }
