@@ -17,10 +17,11 @@ directories but once you have it running, feel free to expand this and let us kn
 3. Start the "Run Corda FTP Nodes" run configuration in the dropdown
 4. Wait until the nodes have started up (i.e. there is no more activity in the output window)
 5. Start the "SenderKt" program
-6. Using the command shell or GUI explorer, navigate to the directory under `build` called `send1`
+6. Using the command shell or GUI explorer, create a directory under `build` called `send1`
 7. Create a file that ends in a .txt suffix with some data
 8. Watch the output of either of the running sessions (either the client log or the node logs) and wait ...
-9. The file will disappear from that directory / node and appear in another directory being transferred via the Corda network that you are running. The destination directory will appear under build/DATETIMEOFBUILD/CorpA/incoming_1
+9. The file will disappear from that directory / node and appear in another directory being transferred via the Corda 
+   network that you are running. The destination directory will appear under build/DATETIMEOFBUILD/CorpA/incoming_1
 
 
 It's a very simple example of a CorDapp using attachments but do give us feedback on how you get on and feel free to clone and PR any modifications you make.
